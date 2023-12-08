@@ -3,7 +3,7 @@ const asynchandler = require("express-async-handler");
 
 // for get all data
 const getallcontact = asynchandler(async (req, res) => {
-    const data = await contact.find();
+    const data = await contact.find({user_id:req.user.id});
     res.status(200).json(data)
 });
 
@@ -14,7 +14,7 @@ const createcontact = asynchandler(async (req, res) => {
         res.status(400);
         throw new Error("All Fileds Are Required...");
     }
-    const data = await contact.create({ name, email, phno });
+    const data = await contact.create({ name, email, phno, user_id:req.user.id});
     res.status(201).json(data);
 });
 

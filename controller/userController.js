@@ -49,7 +49,7 @@ const loginuser = asynchandler(async (req, res) => {
                 email:find_user.email,
                 id:find_user._id
             }
-        },process.env.access_token_secert,{expiresIn:"1m"});
+        },process.env.access_token_secert,{expiresIn:"15m"});
         res.status(200).json({accessToken});
     }
     else{
