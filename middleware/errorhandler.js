@@ -24,13 +24,9 @@ const errorhandler = (err, req, res, next) => {
             break;
 
         default:
-            res.json({ title: "Unkown Error", error: err.message, stacktrack: stack });
+            res.json({ title: "Unkown Error", error: err.message, stacktrack: err.stack });
             break;
     }
-
-
-
-    res.json({ message: err.message, stacktrack: err.stack });
 }
 
 module.exports = errorhandler;

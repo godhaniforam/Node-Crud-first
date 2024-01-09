@@ -3,7 +3,7 @@ const asynchandler = require("express-async-handler");
 
 // for get all data
 const getallcontact = asynchandler(async (req, res) => {
-    const data = await contact.find({user_id:req.user.id});
+    const data = await contact.find({ user_id: req.user.id });
     res.status(200).json(data)
 });
 
@@ -14,7 +14,7 @@ const createcontact = asynchandler(async (req, res) => {
         res.status(400);
         throw new Error("All Fileds Are Required...");
     }
-    const data = await contact.create({ name, email, phno, user_id:req.user.id});
+    const data = await contact.create({ name, email, phno, user_id: req.user.id });
     res.status(201).json(data);
 });
 
@@ -33,11 +33,11 @@ const deletecontact = asynchandler(async (req, res) => {
     const data = await contact.findByIdAndDelete(
         req.params.id
     );
-    if(!data){
+    if (!data) {
         res.send(404);
         throw new Error("Data Not Deleted...");
     }
-    res.status(200).json({ message: `Delete User By id: ${req.params.id}` });
+    res.status(200).json({ message: `Delete Contact By id: ${req.params.id}` });
 });
 
 // for update user data
